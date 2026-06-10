@@ -1,0 +1,24 @@
+﻿# Raw dataset (kept local, available from figshare DOI)
+*.csv
+!results/*.csv
+Process/
+Pharma datasets/
+Base_Paper.pdf
+
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+ai_env/
+*.egg-info/
+
+# OS and editor
+.DS_Store
+Thumbs.db
+.vscode/
+
+# Models and large outputs
+*.pt
+*.pth
+*.h5
+*.ckpt

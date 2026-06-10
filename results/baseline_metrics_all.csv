@@ -1,0 +1,13 @@
+target,model,RMSE,MAE,R2
+dissolution_av,dummy,3.512,2.836,-0.329
+dissolution_av,lasso,3.119,2.416,-0.062
+dissolution_av,xgb,3.147,2.479,-0.077
+tbl_av_hardness,dummy,11.439,8.15,-0.347
+tbl_av_hardness,lasso,6.619,5.29,0.127
+tbl_av_hardness,xgb,5.004,3.844,0.525
+tbl_rsd_weight,dummy,0.558,0.301,-0.02
+tbl_rsd_weight,lasso,0.538,0.267,0.059
+tbl_rsd_weight,xgb,0.605,0.297,-0.299
+fct_tensile,dummy,0.419,0.381,-2.674
+fct_tensile,lasso,0.343,0.288,-1.494
+fct_tensile,xgb,0.255,0.197,-0.319
