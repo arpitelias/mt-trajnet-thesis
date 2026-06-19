@@ -1,0 +1,37 @@
+{
+  "model": "MT-TrajNet (full: multi-task + evidential uncertainty)",
+  "setup": "3-fold GroupKFold, early stopping, stride-2, MAXLEN 6000, hidden 128, GPU",
+  "mean_rmse": {
+    "dissolution_av": 3.703,
+    "tbl_av_hardness": 7.598,
+    "tbl_rsd_weight": 0.554,
+    "fct_tensile": 0.349
+  },
+  "std_rmse": {
+    "dissolution_av": 0.291,
+    "tbl_av_hardness": 2.406,
+    "tbl_rsd_weight": 0.11,
+    "fct_tensile": 0.174
+  },
+  "fold_rmse": [
+    [
+      3.793,
+      10.992,
+      0.429,
+      0.213
+    ],
+    [
+      3.311,
+      5.683,
+      0.535,
+      0.241
+    ],
+    [
+      4.006,
+      6.121,
+      0.697,
+      0.595
+    ]
+  ],
+  "note": "evidential uncertainty added with no loss of accuracy vs plain multi-task"
+}
