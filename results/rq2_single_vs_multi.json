@@ -1,0 +1,48 @@
+{
+  "comparison": "single-task vs multi-task (RQ2)",
+  "single_task": {
+    "dissolution_av": {
+      "mean": 3.4416809922586524,
+      "std": 0.3195355640299833,
+      "folds": [
+        3.0818010251464565,
+        3.384937068517627,
+        3.858304883111873
+      ]
+    },
+    "tbl_av_hardness": {
+      "mean": 7.793741616997416,
+      "std": 2.394146430899396,
+      "folds": [
+        11.118427178004884,
+        5.576642007600328,
+        6.686155665387032
+      ]
+    },
+    "tbl_rsd_weight": {
+      "mean": 0.5526002685341009,
+      "std": 0.11751067102567393,
+      "folds": [
+        0.4271558044942539,
+        0.5209249288761848,
+        0.7097200722318642
+      ]
+    },
+    "fct_tensile": {
+      "mean": 0.31830811943191756,
+      "std": 0.1773948933349846,
+      "folds": [
+        0.1524038318608802,
+        0.23828711267982233,
+        0.5642334137550501
+      ]
+    }
+  },
+  "multi_task": {
+    "dissolution_av": 3.703,
+    "tbl_av_hardness": 7.598,
+    "tbl_rsd_weight": 0.554,
+    "fct_tensile": 0.349
+  },
+  "finding": "no statistically significant difference on any target (see rq2_significance.json); shared encoder does not harm individual task accuracy"
+}

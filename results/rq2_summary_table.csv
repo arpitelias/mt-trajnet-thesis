@@ -1,0 +1,5 @@
+,single_task,multi_task,p_value,significant,better
+dissolution_av,3.442,3.703,0.552,no,single
+tbl_av_hardness,7.794,7.598,0.595,no,multi
+tbl_rsd_weight,0.553,0.554,0.939,no,single
+fct_tensile,0.318,0.349,0.357,no,single
