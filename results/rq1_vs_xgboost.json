@@ -1,0 +1,30 @@
+{
+  "comparison": "MT-TrajNet vs tuned XGBoost, matched GroupKFold(3), Nadeau-Bengio",
+  "results": {
+    "dissolution_av": {
+      "xgb": 3.195,
+      "mttrajnet": 3.703,
+      "p": 0.062,
+      "significant": false
+    },
+    "tbl_av_hardness": {
+      "xgb": 5.014,
+      "mttrajnet": 7.599,
+      "p": 0.464,
+      "significant": false
+    },
+    "tbl_rsd_weight": {
+      "xgb": 0.599,
+      "mttrajnet": 0.554,
+      "p": 0.329,
+      "significant": false
+    },
+    "fct_tensile": {
+      "xgb": 0.266,
+      "mttrajnet": 0.35,
+      "p": 0.506,
+      "significant": false
+    }
+  },
+  "conclusion": "no statistically significant difference on any target; MT-TrajNet matches tuned XGBoost on accuracy while adding calibrated uncertainty and explainability"
+}

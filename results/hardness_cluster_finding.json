@@ -1,0 +1,13 @@
+{
+  "high_cluster_codes": [
+    4,
+    8,
+    15,
+    20,
+    24
+  ],
+  "high_cluster_batches": 98,
+  "low_cluster_batches": 907,
+  "overlap": "none",
+  "note": "hardness bimodality maps to five distinct high-hardness product codes with no overlap; OOD test on a high-hardness code (e.g. code 15) mixes distribution shift with hardness-regime shift"
+}

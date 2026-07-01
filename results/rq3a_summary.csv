@@ -1,0 +1,5 @@
+,PICP_90,ECE,unc_err_corr
+dissolution_av,0.758,0.08,-0.044
+tbl_av_hardness,0.831,0.073,0.123
+tbl_rsd_weight,0.827,0.041,0.042
+fct_tensile,0.56,0.272,0.478
