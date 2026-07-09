@@ -1,0 +1,70 @@
+{
+  "comparison": "MT-TrajNet (seeded run, Notebook 6) vs tuned XGBoost, matched GroupKFold(3), Nadeau-Bengio",
+  "results": {
+    "dissolution_av": {
+      "xgb_folds": [
+        3.133,
+        2.941,
+        3.512
+      ],
+      "xgb_mean": 3.195,
+      "mt_folds": [
+        4.049,
+        3.428,
+        4.14
+      ],
+      "mt_mean": 3.872,
+      "p": 0.077,
+      "significant": false
+    },
+    "tbl_av_hardness": {
+      "xgb_folds": [
+        4.792,
+        4.522,
+        5.728
+      ],
+      "xgb_mean": 5.014,
+      "mt_folds": [
+        19.713,
+        7.842,
+        11.662
+      ],
+      "mt_mean": 13.072,
+      "p": 0.284,
+      "significant": false
+    },
+    "tbl_rsd_weight": {
+      "xgb_folds": [
+        0.512,
+        0.54,
+        0.746
+      ],
+      "xgb_mean": 0.599,
+      "mt_folds": [
+        0.445,
+        0.528,
+        0.688
+      ],
+      "mt_mean": 0.554,
+      "p": 0.233,
+      "significant": false
+    },
+    "fct_tensile": {
+      "xgb_folds": [
+        0.174,
+        0.243,
+        0.382
+      ],
+      "xgb_mean": 0.266,
+      "mt_folds": [
+        0.376,
+        0.304,
+        0.608
+      ],
+      "mt_mean": 0.429,
+      "p": 0.182,
+      "significant": false
+    }
+  },
+  "note": "three folds gives low statistical power, so p-values near the threshold are weak evidence in either direction"
+}

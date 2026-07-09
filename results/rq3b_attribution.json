@@ -1,0 +1,86 @@
+{
+  "analysis": "RQ3b uncertainty-stratified SHAP attribution, fold 1, dissolution target",
+  "setup": "GradientExplainer, 32 background samples, full test fold (335 batches), top and bottom 20 percent by epistemic uncertainty",
+  "group_sizes": {
+    "confident": 67,
+    "uncertain": 67
+  },
+  "mean_epistemic": {
+    "confident": 26.718,
+    "uncertain": 90.359
+  },
+  "per_channel": {
+    "tbl_speed": {
+      "confident": 0.1385,
+      "uncertain": 0.2748,
+      "ratio": 1.984
+    },
+    "fom": {
+      "confident": 0.0776,
+      "uncertain": 0.1319,
+      "ratio": 1.701
+    },
+    "main_comp": {
+      "confident": 0.5277,
+      "uncertain": 0.2514,
+      "ratio": 0.476
+    },
+    "tbl_fill": {
+      "confident": 0.7539,
+      "uncertain": 1.4245,
+      "ratio": 1.89
+    },
+    "SREL": {
+      "confident": 0.0303,
+      "uncertain": 0.0513,
+      "ratio": 1.691
+    },
+    "pre_comp": {
+      "confident": 0.2194,
+      "uncertain": 0.6787,
+      "ratio": 3.094
+    },
+    "cyl_main": {
+      "confident": 0.2014,
+      "uncertain": 0.5616,
+      "ratio": 2.788
+    },
+    "cyl_pre": {
+      "confident": 0.3192,
+      "uncertain": 0.1045,
+      "ratio": 0.327
+    },
+    "stiffness": {
+      "confident": 0.0221,
+      "uncertain": 0.0208,
+      "ratio": 0.94
+    },
+    "ejection": {
+      "confident": 0.0438,
+      "uncertain": 0.028,
+      "ratio": 0.639
+    }
+  },
+  "per_phase": {
+    "early": {
+      "confident": 2.1597,
+      "uncertain": 2.2139,
+      "ratio": 1.025
+    },
+    "mid": {
+      "confident": 0.0946,
+      "uncertain": 0.9556,
+      "ratio": 10.103
+    },
+    "late": {
+      "confident": 0.0796,
+      "uncertain": 0.3579,
+      "ratio": 4.495
+    }
+  },
+  "kendall_tau_channels": {
+    "tau": 0.644,
+    "p": 0.0091
+  },
+  "note": "channel rankings are significantly correlated but not identical (tau 0.644, p 0.009), with several channels shifting substantially in importance; phase attention shifts from almost entirely early phase when confident to also mid and late phases when uncertain; phase-level Kendall test has no power with three categories"
+}

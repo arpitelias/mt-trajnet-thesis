@@ -1,0 +1,62 @@
+{
+  "run": "MT-TrajNet final, seeded, grouped CV, held-out calibration split",
+  "seed": 42,
+  "setup": "3-fold GroupKFold on product code, early stopping, stride-2, MAXLEN 6000, hidden 128",
+  "rmse_mean": {
+    "dissolution_av": 3.872,
+    "tbl_av_hardness": 13.072,
+    "tbl_rsd_weight": 0.554,
+    "fct_tensile": 0.43
+  },
+  "rmse_std": {
+    "dissolution_av": 0.316,
+    "tbl_av_hardness": 4.948,
+    "tbl_rsd_weight": 0.101,
+    "fct_tensile": 0.13
+  },
+  "rmse_folds": {
+    "dissolution_av": [
+      4.049,
+      3.428,
+      4.14
+    ],
+    "tbl_av_hardness": [
+      19.713,
+      7.842,
+      11.662
+    ],
+    "tbl_rsd_weight": [
+      0.445,
+      0.528,
+      0.688
+    ],
+    "fct_tensile": [
+      0.376,
+      0.304,
+      0.608
+    ]
+  },
+  "calibration": {
+    "dissolution_av": {
+      "picp": 0.863,
+      "ece": 0.034,
+      "corr": 0.2
+    },
+    "tbl_av_hardness": {
+      "picp": 0.848,
+      "ece": 0.03,
+      "corr": 0.739
+    },
+    "tbl_rsd_weight": {
+      "picp": 0.748,
+      "ece": 0.101,
+      "corr": 0.021
+    },
+    "fct_tensile": {
+      "picp": 0.847,
+      "ece": 0.032,
+      "corr": 0.274
+    }
+  },
+  "note": "holding out a dedicated calibration partition within each fold reduces training data and increases RMSE, but ensures calibration scale estimation and prediction accuracy are evaluated on independent data; under this pipeline MT-TrajNet does not beat the dummy mean predictor on dissolution, hardness or tensile"
+}
