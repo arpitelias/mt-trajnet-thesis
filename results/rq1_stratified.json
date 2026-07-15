@@ -1,0 +1,74 @@
+{
+  "comparison": "MT-TrajNet (stratified folds, cross-fitting) vs tuned XGBoost (500 trees, depth 5, lr 0.03, subsample 0.8), same stratified folds, code 15 excluded, Nadeau-Bengio corrected paired test",
+  "note": "three folds gives low power; p-values are weak evidence in either direction. Fold values in this file are rounded to three decimals for storage: the MT-TrajNet folds as saved by Notebook 8, the XGBoost folds on writing. All means and p-values are computed from the unrounded values, so recomputing them from the stored folds can differ by up to 0.002. mt_mean is Notebook 8's mean from the unrounded folds.",
+  "results": {
+    "dissolution_av": {
+      "xgb_folds": [
+        3.2,
+        3.244,
+        3.285
+      ],
+      "xgb_mean": 3.243,
+      "mt_folds": [
+        3.344,
+        3.147,
+        3.292
+      ],
+      "mt_mean": 3.261,
+      "diff": 0.018,
+      "p": 0.886,
+      "significant": false
+    },
+    "tbl_av_hardness": {
+      "xgb_folds": [
+        4.984,
+        4.076,
+        5.222
+      ],
+      "xgb_mean": 4.761,
+      "mt_folds": [
+        7.9,
+        7.428,
+        7.767
+      ],
+      "mt_mean": 7.698,
+      "diff": 2.937,
+      "p": 0.015,
+      "significant": true
+    },
+    "tbl_rsd_weight": {
+      "xgb_folds": [
+        0.741,
+        0.454,
+        0.639
+      ],
+      "xgb_mean": 0.611,
+      "mt_folds": [
+        0.77,
+        0.442,
+        0.543
+      ],
+      "mt_mean": 0.585,
+      "diff": -0.026,
+      "p": 0.697,
+      "significant": false
+    },
+    "fct_tensile": {
+      "xgb_folds": [
+        0.288,
+        0.251,
+        0.27
+      ],
+      "xgb_mean": 0.27,
+      "mt_folds": [
+        0.404,
+        0.35,
+        0.283
+      ],
+      "mt_mean": 0.345,
+      "diff": 0.075,
+      "p": 0.269,
+      "significant": false
+    }
+  }
+}

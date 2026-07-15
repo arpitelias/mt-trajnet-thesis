@@ -1,0 +1,111 @@
+{
+  "analysis": "RQ3b uncertainty-stratified SHAP, all four targets, stratified cross-fitting model (Notebook 8), fold 1",
+  "setup": "GradientExplainer, 32 background samples, full fold-1 test set (314 batches), top/bottom 20% by per-target epistemic uncertainty; reproduced identically across two runs",
+  "results": {
+    "dissolution_av": {
+      "kendall_tau": 0.822,
+      "p": 0.0004,
+      "significant": true,
+      "mean_epistemic": {
+        "confident": 14.642,
+        "uncertain": 76.167
+      },
+      "channel_ratios": {
+        "tbl_speed": 1.078,
+        "fom": 1.028,
+        "main_comp": 0.681,
+        "tbl_fill": 0.798,
+        "SREL": 0.581,
+        "pre_comp": 1.218,
+        "cyl_main": 0.71,
+        "cyl_pre": 0.984,
+        "stiffness": 0.581,
+        "ejection": 1.678
+      },
+      "phase_ratios": {
+        "early": 0.807,
+        "mid": 0.951,
+        "late": 0.896
+      }
+    },
+    "tbl_av_hardness": {
+      "kendall_tau": 0.822,
+      "p": 0.0004,
+      "significant": true,
+      "mean_epistemic": {
+        "confident": 6.688,
+        "uncertain": 54.654
+      },
+      "channel_ratios": {
+        "tbl_speed": 1.384,
+        "fom": 1.464,
+        "main_comp": 1.582,
+        "tbl_fill": 4.862,
+        "SREL": 1.28,
+        "pre_comp": 1.147,
+        "cyl_main": 2.805,
+        "cyl_pre": 1.517,
+        "stiffness": 0.981,
+        "ejection": 1.007
+      },
+      "phase_ratios": {
+        "early": 1.932,
+        "mid": 1.672,
+        "late": 1.643
+      }
+    },
+    "tbl_rsd_weight": {
+      "kendall_tau": 0.467,
+      "p": 0.0726,
+      "significant": false,
+      "mean_epistemic": {
+        "confident": 4.309,
+        "uncertain": 14.265
+      },
+      "channel_ratios": {
+        "tbl_speed": 1.636,
+        "fom": 0.49,
+        "main_comp": 0.839,
+        "tbl_fill": 1.268,
+        "SREL": 0.876,
+        "pre_comp": 0.52,
+        "cyl_main": 0.968,
+        "cyl_pre": 1.281,
+        "stiffness": 0.305,
+        "ejection": 1.331
+      },
+      "phase_ratios": {
+        "early": 1.043,
+        "mid": 0.502,
+        "late": 1.34
+      }
+    },
+    "fct_tensile": {
+      "kendall_tau": 0.467,
+      "p": 0.0726,
+      "significant": false,
+      "mean_epistemic": {
+        "confident": 6.324,
+        "uncertain": 27.027
+      },
+      "channel_ratios": {
+        "tbl_speed": 0.805,
+        "fom": 0.54,
+        "main_comp": 1.343,
+        "tbl_fill": 0.863,
+        "SREL": 0.875,
+        "pre_comp": 0.559,
+        "cyl_main": 0.29,
+        "cyl_pre": 1.136,
+        "stiffness": 1.373,
+        "ejection": 1.879
+      },
+      "phase_ratios": {
+        "early": 0.902,
+        "mid": 1.011,
+        "late": 1.926
+      }
+    }
+  },
+  "note": "channel-level attribution shift is significant and reproducible on dissolution and hardness (tau 0.822, p 0.0004), not significant on weight RSD and tensile (tau 0.467, p 0.073); the strong mid and late phase-attention shift seen on the earlier model (trained on the imbalanced folds) did not replicate on the corrected stratified model, indicating that phase pattern was specific to the earlier model rather than a robust property"
+}

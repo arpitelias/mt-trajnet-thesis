@@ -1,0 +1,68 @@
+{
+  "run": "MT-TrajNet final, stratified folds + cross-fitting, seed 42",
+  "seed": 42,
+  "setup": "3-fold stratified GroupKFold (high-cluster balanced 22/6/6), code 15 held out for OOD, cross-fitting calibration, stride-2, MAXLEN 6000, hidden 128",
+  "ood_code": 15,
+  "oof_batches": 941,
+  "rmse_mean": {
+    "dissolution_av": 3.261,
+    "tbl_av_hardness": 7.698,
+    "tbl_rsd_weight": 0.585,
+    "fct_tensile": 0.345
+  },
+  "rmse_std": {
+    "dissolution_av": 0.083,
+    "tbl_av_hardness": 0.198,
+    "tbl_rsd_weight": 0.137,
+    "fct_tensile": 0.05
+  },
+  "rmse_folds": {
+    "dissolution_av": [
+      3.344,
+      3.147,
+      3.292
+    ],
+    "tbl_av_hardness": [
+      7.9,
+      7.428,
+      7.767
+    ],
+    "tbl_rsd_weight": [
+      0.77,
+      0.442,
+      0.543
+    ],
+    "fct_tensile": [
+      0.404,
+      0.35,
+      0.283
+    ]
+  },
+  "calibration": {
+    "dissolution_av": {
+      "picp": 0.858,
+      "ece": 0.022,
+      "corr": 0.039,
+      "scale": 0.211
+    },
+    "tbl_av_hardness": {
+      "picp": 0.933,
+      "ece": 0.038,
+      "corr": 0.531,
+      "scale": 0.316
+    },
+    "tbl_rsd_weight": {
+      "picp": 0.948,
+      "ece": 0.184,
+      "corr": 0.031,
+      "scale": 0.574
+    },
+    "fct_tensile": {
+      "picp": 0.85,
+      "ece": 0.025,
+      "corr": 0.014,
+      "scale": 0.253
+    }
+  },
+  "note": "stratified folds removed the fold-1 hardness artifact (was 19.7, now 7.4-7.9); cross-fitting recovered training data so RMSE improved; MT-TrajNet now beats the dummy on dissolution, hardness and tensile but not weight RSD; hardness still trails tuned XGBoost (7.7 vs 4.8); weight RSD uncertainty is poorly calibrated (ECE 0.184, correlation 0.03)"
+}

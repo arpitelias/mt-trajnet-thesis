@@ -1,0 +1,79 @@
+{
+  "comparison": "single-task vs multi-task, stratified folds + cross-fitting setup (seed 42), Nadeau-Bengio",
+  "note": "multi-task fold values and means are from the Notebook 8 authoritative run; both on identical stratified folds; three folds gives low power. Fold values are stored rounded to three decimals, so recomputing a mean or a p-value from them can differ from the stored value by up to 0.002; multi_mean is Notebook 8 mean from the unrounded folds.",
+  "params": {
+    "multi_task": 384400,
+    "four_single_task": 1435408,
+    "reduction": 3.73
+  },
+  "results": {
+    "dissolution_av": {
+      "single_folds": [
+        3.654,
+        3.393,
+        3.593
+      ],
+      "single_mean": 3.547,
+      "multi_folds": [
+        3.344,
+        3.147,
+        3.292
+      ],
+      "multi_mean": 3.261,
+      "diff": 0.286,
+      "p": 0.012,
+      "significant": true
+    },
+    "tbl_av_hardness": {
+      "single_folds": [
+        11.054,
+        7.514,
+        6.363
+      ],
+      "single_mean": 8.31,
+      "multi_folds": [
+        7.9,
+        7.428,
+        7.767
+      ],
+      "multi_mean": 7.698,
+      "diff": 0.612,
+      "p": 0.8,
+      "significant": false
+    },
+    "tbl_rsd_weight": {
+      "single_folds": [
+        0.768,
+        0.54,
+        0.477
+      ],
+      "single_mean": 0.595,
+      "multi_folds": [
+        0.77,
+        0.442,
+        0.543
+      ],
+      "multi_mean": 0.585,
+      "diff": 0.01,
+      "p": 0.904,
+      "significant": false
+    },
+    "fct_tensile": {
+      "single_folds": [
+        0.385,
+        0.311,
+        0.397
+      ],
+      "single_mean": 0.364,
+      "multi_folds": [
+        0.404,
+        0.35,
+        0.283
+      ],
+      "multi_mean": 0.345,
+      "diff": 0.019,
+      "p": 0.83,
+      "significant": false
+    }
+  }
+}

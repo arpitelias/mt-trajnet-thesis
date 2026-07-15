@@ -1,0 +1,5 @@
+,dummy,lasso,xgb,lasso_tuned,xgb_tuned,MT_TrajNet,best_baseline
+dissolution_av,3.533,3.171,3.272,3.205,3.243,3.261,3.171
+tbl_av_hardness,8.82,5.962,4.737,6.087,4.761,7.698,4.737
+tbl_rsd_weight,0.573,0.557,0.635,0.563,0.611,0.585,0.557
+fct_tensile,0.422,0.359,0.279,0.325,0.27,0.345,0.27
