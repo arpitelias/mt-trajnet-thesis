@@ -1,0 +1,437 @@
+{
+  "analysis": "extended metrics and leave one product code out, computed from the Notebook 8 out of fold predictions",
+  "note": "the folds are grouped by product code, so every out of fold prediction comes from a model that never trained on that code. the out of fold predictions are therefore leave one product code out results. no training performed. the calibrated std uses the per fold scale Notebook 8 fitted on the other two folds",
+  "n_batches": 941,
+  "n_codes": 24,
+  "ood_code_excluded": 15,
+  "pooled_metrics": {
+    "dissolution_av": {
+      "rmse": 3.262,
+      "rmse_ci": [
+        3.109,
+        3.422
+      ],
+      "mae": 2.564,
+      "mae_ci": [
+        2.435,
+        2.692
+      ],
+      "r2": 0.05,
+      "r2_ci": [
+        0.001,
+        0.094
+      ],
+      "n": 941
+    },
+    "tbl_av_hardness": {
+      "rmse": 7.701,
+      "rmse_ci": [
+        6.992,
+        8.446
+      ],
+      "mae": 5.161,
+      "mae_ci": [
+        4.814,
+        5.564
+      ],
+      "r2": 0.252,
+      "r2_ci": [
+        0.126,
+        0.349
+      ],
+      "n": 941
+    },
+    "tbl_rsd_weight": {
+      "rmse": 0.601,
+      "rmse_ci": [
+        0.453,
+        0.76
+      ],
+      "mae": 0.293,
+      "mae_ci": [
+        0.263,
+        0.327
+      ],
+      "r2": -0.063,
+      "r2_ci": [
+        -0.097,
+        -0.032
+      ],
+      "n": 941
+    },
+    "fct_tensile": {
+      "rmse": 0.349,
+      "rmse_ci": [
+        0.333,
+        0.365
+      ],
+      "mae": 0.273,
+      "mae_ci": [
+        0.26,
+        0.287
+      ],
+      "r2": 0.114,
+      "r2_ci": [
+        0.036,
+        0.185
+      ],
+      "n": 941
+    }
+  },
+  "note_on_rmse": "pooled RMSE over all 941 batches. Notebook 8 reports the mean of the three fold RMSEs, which differs slightly when folds disagree; both are correct, they are different quantities",
+  "coverage": {
+    "dissolution_av": {
+      "picp80": 0.77,
+      "picp90": 0.857,
+      "picp95": 0.897,
+      "ece_5bin": 0.024,
+      "mean_width_90": 10.838,
+      "width_over_rmse": 3.32
+    },
+    "tbl_av_hardness": {
+      "picp80": 0.846,
+      "picp90": 0.932,
+      "picp95": 0.957,
+      "ece_5bin": 0.031,
+      "mean_width_90": 25.397,
+      "width_over_rmse": 3.3
+    },
+    "tbl_rsd_weight": {
+      "picp80": 0.93,
+      "picp90": 0.946,
+      "picp95": 0.96,
+      "ece_5bin": 0.163,
+      "mean_width_90": 1.962,
+      "width_over_rmse": 3.26
+    },
+    "fct_tensile": {
+      "picp80": 0.79,
+      "picp90": 0.841,
+      "picp95": 0.865,
+      "ece_5bin": 0.034,
+      "mean_width_90": 1.187,
+      "width_over_rmse": 3.4
+    }
+  },
+  "ca2_eligible_codes": [
+    1,
+    13,
+    17,
+    21,
+    23
+  ],
+  "leave_one_code_out": {
+    "1": {
+      "n": 95,
+      "mean_hardness": 50.9,
+      "rmse": {
+        "dissolution_av": 3.406,
+        "tbl_av_hardness": 4.754,
+        "tbl_rsd_weight": 0.454,
+        "fct_tensile": 0.318
+      },
+      "picp90_hardness": 0.979,
+      "high_cluster": false,
+      "ca2_eligible": true
+    },
+    "2": {
+      "n": 17,
+      "mean_hardness": 53.6,
+      "rmse": {
+        "dissolution_av": 2.712,
+        "tbl_av_hardness": 3.696,
+        "tbl_rsd_weight": 0.236,
+        "fct_tensile": 0.316
+      },
+      "picp90_hardness": 0.941,
+      "high_cluster": false,
+      "ca2_eligible": false
+    },
+    "3": {
+      "n": 16,
+      "mean_hardness": 52.1,
+      "rmse": {
+        "dissolution_av": 3.213,
+        "tbl_av_hardness": 3.932,
+        "tbl_rsd_weight": 0.382,
+        "fct_tensile": 0.262
+      },
+      "picp90_hardness": 1.0,
+      "high_cluster": false,
+      "ca2_eligible": false
+    },
+    "4": {
+      "n": 22,
+      "mean_hardness": 90.4,
+      "rmse": {
+        "dissolution_av": 2.054,
+        "tbl_av_hardness": 19.665,
+        "tbl_rsd_weight": 0.192,
+        "fct_tensile": 0.134
+      },
+      "picp90_hardness": 1.0,
+      "high_cluster": true,
+      "ca2_eligible": false
+    },
+    "5": {
+      "n": 3,
+      "mean_hardness": 49.7,
+      "rmse": {
+        "dissolution_av": 3.138,
+        "tbl_av_hardness": 4.633,
+        "tbl_rsd_weight": 0.729,
+        "fct_tensile": 0.212
+      },
+      "picp90_hardness": 1.0,
+      "high_cluster": false,
+      "ca2_eligible": false
+    },
+    "6": {
+      "n": 2,
+      "mean_hardness": 52.0,
+      "rmse": {
+        "dissolution_av": 5.915,
+        "tbl_av_hardness": 5.251,
+        "tbl_rsd_weight": 0.144,
+        "fct_tensile": 0.524
+      },
+      "picp90_hardness": 1.0,
+      "high_cluster": false,
+      "ca2_eligible": false
+    },
+    "7": {
+      "n": 8,
+      "mean_hardness": 53.4,
+      "rmse": {
+        "dissolution_av": 3.125,
+        "tbl_av_hardness": 4.351,
+        "tbl_rsd_weight": 3.228,
+        "fct_tensile": 0.333
+      },
+      "picp90_hardness": 1.0,
+      "high_cluster": false,
+      "ca2_eligible": false
+    },
+    "8": {
+      "n": 2,
+      "mean_hardness": 90.5,
+      "rmse": {
+        "dissolution_av": 4.199,
+        "tbl_av_hardness": 34.109,
+        "tbl_rsd_weight": 0.097,
+        "fct_tensile": 0.233
+      },
+      "picp90_hardness": 1.0,
+      "high_cluster": true,
+      "ca2_eligible": false
+    },
+    "9": {
+      "n": 4,
+      "mean_hardness": 48.2,
+      "rmse": {
+        "dissolution_av": 2.001,
+        "tbl_av_hardness": 4.626,
+        "tbl_rsd_weight": 0.278,
+        "fct_tensile": 0.14
+      },
+      "picp90_hardness": 1.0,
+      "high_cluster": false,
+      "ca2_eligible": false
+    },
+    "10": {
+      "n": 27,
+      "mean_hardness": 52.6,
+      "rmse": {
+        "dissolution_av": 4.439,
+        "tbl_av_hardness": 4.452,
+        "tbl_rsd_weight": 0.223,
+        "fct_tensile": 0.75
+      },
+      "picp90_hardness": 0.963,
+      "high_cluster": false,
+      "ca2_eligible": false
+    },
+    "11": {
+      "n": 15,
+      "mean_hardness": 38.9,
+      "rmse": {
+        "dissolution_av": 4.011,
+        "tbl_av_hardness": 11.364,
+        "tbl_rsd_weight": 0.281,
+        "fct_tensile": 0.423
+      },
+      "picp90_hardness": 0.4,
+      "high_cluster": false,
+      "ca2_eligible": false
+    },
+    "12": {
+      "n": 21,
+      "mean_hardness": 52.2,
+      "rmse": {
+        "dissolution_av": 2.854,
+        "tbl_av_hardness": 2.836,
+        "tbl_rsd_weight": 0.462,
+        "fct_tensile": 0.191
+      },
+      "picp90_hardness": 1.0,
+      "high_cluster": false,
+      "ca2_eligible": false
+    },
+    "13": {
+      "n": 131,
+      "mean_hardness": 50.2,
+      "rmse": {
+        "dissolution_av": 3.537,
+        "tbl_av_hardness": 7.593,
+        "tbl_rsd_weight": 0.726,
+        "fct_tensile": 0.516
+      },
+      "picp90_hardness": 0.962,
+      "high_cluster": false,
+      "ca2_eligible": true
+    },
+    "14": {
+      "n": 11,
+      "mean_hardness": 36.0,
+      "rmse": {
+        "dissolution_av": 5.765,
+        "tbl_av_hardness": 18.841,
+        "tbl_rsd_weight": 0.443,
+        "fct_tensile": 0.662
+      },
+      "picp90_hardness": 1.0,
+      "high_cluster": false,
+      "ca2_eligible": false
+    },
+    "16": {
+      "n": 2,
+      "mean_hardness": 37.0,
+      "rmse": {
+        "dissolution_av": 4.623,
+        "tbl_av_hardness": 17.628,
+        "tbl_rsd_weight": 0.543,
+        "fct_tensile": 0.572
+      },
+      "picp90_hardness": 1.0,
+      "high_cluster": false,
+      "ca2_eligible": false
+    },
+    "17": {
+      "n": 207,
+      "mean_hardness": 53.0,
+      "rmse": {
+        "dissolution_av": 3.083,
+        "tbl_av_hardness": 5.078,
+        "tbl_rsd_weight": 0.511,
+        "fct_tensile": 0.287
+      },
+      "picp90_hardness": 0.971,
+      "high_cluster": false,
+      "ca2_eligible": true
+    },
+    "18": {
+      "n": 1,
+      "mean_hardness": 57.0,
+      "rmse": {
+        "dissolution_av": 4.179,
+        "tbl_av_hardness": 6.269,
+        "tbl_rsd_weight": 0.397,
+        "fct_tensile": 0.048
+      },
+      "picp90_hardness": 1.0,
+      "high_cluster": false,
+      "ca2_eligible": false
+    },
+    "19": {
+      "n": 17,
+      "mean_hardness": 51.8,
+      "rmse": {
+        "dissolution_av": 2.047,
+        "tbl_av_hardness": 2.75,
+        "tbl_rsd_weight": 0.247,
+        "fct_tensile": 0.096
+      },
+      "picp90_hardness": 1.0,
+      "high_cluster": false,
+      "ca2_eligible": false
+    },
+    "20": {
+      "n": 4,
+      "mean_hardness": 89.5,
+      "rmse": {
+        "dissolution_av": 6.347,
+        "tbl_av_hardness": 33.323,
+        "tbl_rsd_weight": 0.167,
+        "fct_tensile": 0.134
+      },
+      "picp90_hardness": 0.75,
+      "high_cluster": true,
+      "ca2_eligible": false
+    },
+    "21": {
+      "n": 68,
+      "mean_hardness": 46.7,
+      "rmse": {
+        "dissolution_av": 2.818,
+        "tbl_av_hardness": 7.515,
+        "tbl_rsd_weight": 0.746,
+        "fct_tensile": 0.155
+      },
+      "picp90_hardness": 0.632,
+      "high_cluster": false,
+      "ca2_eligible": true
+    },
+    "22": {
+      "n": 41,
+      "mean_hardness": 52.3,
+      "rmse": {
+        "dissolution_av": 2.513,
+        "tbl_av_hardness": 4.576,
+        "tbl_rsd_weight": 0.287,
+        "fct_tensile": 0.198
+      },
+      "picp90_hardness": 0.976,
+      "high_cluster": false,
+      "ca2_eligible": false
+    },
+    "23": {
+      "n": 187,
+      "mean_hardness": 52.2,
+      "rmse": {
+        "dissolution_av": 3.181,
+        "tbl_av_hardness": 4.218,
+        "tbl_rsd_weight": 0.482,
+        "fct_tensile": 0.29
+      },
+      "picp90_hardness": 0.952,
+      "high_cluster": false,
+      "ca2_eligible": true
+    },
+    "24": {
+      "n": 6,
+      "mean_hardness": 89.7,
+      "rmse": {
+        "dissolution_av": 2.211,
+        "tbl_av_hardness": 37.582,
+        "tbl_rsd_weight": 0.155,
+        "fct_tensile": 0.522
+      },
+      "picp90_hardness": 0.5,
+      "high_cluster": true,
+      "ca2_eligible": false
+    },
+    "25": {
+      "n": 34,
+      "mean_hardness": 50.4,
+      "rmse": {
+        "dissolution_av": 3.299,
+        "tbl_av_hardness": 4.918,
+        "tbl_rsd_weight": 0.587,
+        "fct_tensile": 0.303
+      },
+      "picp90_hardness": 0.971,
+      "high_cluster": false,
+      "ca2_eligible": false
+    }
+  }
+}
