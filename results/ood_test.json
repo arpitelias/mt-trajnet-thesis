@@ -1,0 +1,138 @@
+{
+  "analysis": "out of distribution test, code 15 high cluster and code 25 low cluster control",
+  "setup": "fold 1 model has never seen either code so the contrast is fair; code 15 also predicted by the fold 2 and fold 3 models as a robustness check; the uncertainty scale is the one Notebook 8 fitted for each fold on the other two folds so it never touched the codes reported here; no training performed, saved weights loaded in inference mode",
+  "ood_code": 15,
+  "ood_batches": 64,
+  "ood_mean_hardness": 90.2,
+  "control_code": 25,
+  "control_batches": 34,
+  "control_mean_hardness": 50.4,
+  "cv_reference_rmse": {
+    "dissolution_av": 3.261,
+    "tbl_av_hardness": 7.698,
+    "tbl_rsd_weight": 0.585,
+    "fct_tensile": 0.345
+  },
+  "results": {
+    "code15_fold1": {
+      "dissolution_av": {
+        "rmse": 2.895,
+        "picp": 1.0,
+        "mean_pred": 87.0,
+        "mean_true": 88.12,
+        "scale_used": 0.228
+      },
+      "tbl_av_hardness": {
+        "rmse": 18.69,
+        "picp": 0.938,
+        "mean_pred": 96.77,
+        "mean_true": 90.17,
+        "scale_used": 0.327
+      },
+      "tbl_rsd_weight": {
+        "rmse": 0.364,
+        "picp": 0.969,
+        "mean_pred": 1.02,
+        "mean_true": 0.96,
+        "scale_used": 0.572
+      },
+      "fct_tensile": {
+        "rmse": 0.143,
+        "picp": 1.0,
+        "mean_pred": 1.27,
+        "mean_true": 1.29,
+        "scale_used": 0.214
+      }
+    },
+    "code15_fold2": {
+      "dissolution_av": {
+        "rmse": 3.039,
+        "picp": 1.0,
+        "mean_pred": 86.86,
+        "mean_true": 88.12,
+        "scale_used": 0.199
+      },
+      "tbl_av_hardness": {
+        "rmse": 38.017,
+        "picp": 0.391,
+        "mean_pred": 52.48,
+        "mean_true": 90.17,
+        "scale_used": 0.311
+      },
+      "tbl_rsd_weight": {
+        "rmse": 0.391,
+        "picp": 1.0,
+        "mean_pred": 1.16,
+        "mean_true": 0.96,
+        "scale_used": 0.584
+      },
+      "fct_tensile": {
+        "rmse": 0.806,
+        "picp": 0.922,
+        "mean_pred": 0.64,
+        "mean_true": 1.29,
+        "scale_used": 0.244
+      }
+    },
+    "code15_fold3": {
+      "dissolution_av": {
+        "rmse": 2.84,
+        "picp": 1.0,
+        "mean_pred": 87.95,
+        "mean_true": 88.12,
+        "scale_used": 0.207
+      },
+      "tbl_av_hardness": {
+        "rmse": 32.633,
+        "picp": 0.984,
+        "mean_pred": 58.0,
+        "mean_true": 90.17,
+        "scale_used": 0.312
+      },
+      "tbl_rsd_weight": {
+        "rmse": 0.353,
+        "picp": 0.984,
+        "mean_pred": 1.06,
+        "mean_true": 0.96,
+        "scale_used": 0.553
+      },
+      "fct_tensile": {
+        "rmse": 0.419,
+        "picp": 1.0,
+        "mean_pred": 1.03,
+        "mean_true": 1.29,
+        "scale_used": 0.308
+      }
+    },
+    "code25_fold1": {
+      "dissolution_av": {
+        "rmse": 3.299,
+        "picp": 0.912,
+        "mean_pred": 92.43,
+        "mean_true": 94.47,
+        "scale_used": 0.228
+      },
+      "tbl_av_hardness": {
+        "rmse": 4.918,
+        "picp": 0.971,
+        "mean_pred": 47.64,
+        "mean_true": 50.35,
+        "scale_used": 0.327
+      },
+      "tbl_rsd_weight": {
+        "rmse": 0.587,
+        "picp": 0.971,
+        "mean_pred": 0.93,
+        "mean_true": 1.02,
+        "scale_used": 0.572
+      },
+      "fct_tensile": {
+        "rmse": 0.303,
+        "picp": 0.853,
+        "mean_pred": 1.77,
+        "mean_true": 2.03,
+        "scale_used": 0.214
+      }
+    }
+  }
+}
