@@ -1,0 +1,151 @@
+{
+  "analysis": "RQ3 deep ensemble vs evidential, fold 1, 5 seeds, calib/eval partition method",
+  "pkl_md5": "7d7fc76be1e4940198b76d9d0797a3a9",
+  "n_seeds": 5,
+  "seeds": [
+    42,
+    43,
+    44,
+    45,
+    46
+  ],
+  "config": {
+    "max_epochs": 150,
+    "patience": 10,
+    "lr": 0.0005,
+    "batch_size": 16
+  },
+  "ensemble_uncertainty": "between-seed variance of means plus mean per-seed aleatoric variance, then calibrated on a held-out half",
+  "in_distribution": {
+    "ensemble": {
+      "dissolution_av": {
+        "picp80": 0.777,
+        "picp90": 0.854,
+        "picp95": 0.898,
+        "ece10": 0.042,
+        "err_corr": -0.101,
+        "rmse": 3.408,
+        "scale": 0.901
+      },
+      "tbl_av_hardness": {
+        "picp80": 0.892,
+        "picp90": 0.924,
+        "picp95": 0.955,
+        "ece10": 0.071,
+        "err_corr": 0.686,
+        "rmse": 9.081,
+        "scale": 1.182
+      },
+      "tbl_rsd_weight": {
+        "picp80": 0.834,
+        "picp90": 0.911,
+        "picp95": 0.936,
+        "ece10": 0.066,
+        "err_corr": 0.125,
+        "rmse": 0.755,
+        "scale": 0.635
+      },
+      "fct_tensile": {
+        "picp80": 0.815,
+        "picp90": 0.904,
+        "picp95": 0.962,
+        "ece10": 0.029,
+        "err_corr": 0.189,
+        "rmse": 0.404,
+        "scale": 1.248
+      }
+    },
+    "evidential": {
+      "dissolution_av": {
+        "picp80": 0.739,
+        "picp90": 0.847,
+        "picp95": 0.898,
+        "ece10": 0.032,
+        "err_corr": -0.069,
+        "rmse": 3.344
+      },
+      "tbl_av_hardness": {
+        "picp80": 0.72,
+        "picp90": 0.847,
+        "picp95": 0.93,
+        "ece10": 0.051,
+        "err_corr": 0.527,
+        "rmse": 7.9
+      },
+      "tbl_rsd_weight": {
+        "picp80": 0.866,
+        "picp90": 0.911,
+        "picp95": 0.924,
+        "ece10": 0.077,
+        "err_corr": 0.099,
+        "rmse": 0.77
+      },
+      "fct_tensile": {
+        "picp80": 0.847,
+        "picp90": 0.93,
+        "picp95": 0.968,
+        "ece10": 0.118,
+        "err_corr": -0.131,
+        "rmse": 0.404
+      }
+    }
+  },
+  "ood_code15": {
+    "ensemble": {
+      "dissolution_av": {
+        "picp80": 0.812,
+        "picp90": 0.906,
+        "picp95": 0.938,
+        "ece10": 0.063,
+        "err_corr": 0.352,
+        "rmse": 2.793,
+        "scale": 0.786
+      },
+      "tbl_av_hardness": {
+        "picp80": 0.531,
+        "picp90": 0.75,
+        "picp95": 0.844,
+        "ece10": 0.216,
+        "err_corr": 0.34,
+        "rmse": 14.08,
+        "scale": 0.629
+      },
+      "tbl_rsd_weight": {
+        "picp80": 0.75,
+        "picp90": 0.812,
+        "picp95": 0.812,
+        "ece10": 0.066,
+        "err_corr": 0.096,
+        "rmse": 0.342,
+        "scale": 0.373
+      },
+      "fct_tensile": {
+        "picp80": 0.688,
+        "picp90": 0.875,
+        "picp95": 0.938,
+        "ece10": 0.072,
+        "err_corr": 0.236,
+        "rmse": 0.117,
+        "scale": 0.289
+      }
+    },
+    "evidential": {
+      "dissolution_av": {
+        "picp90": 1.0,
+        "rmse": 2.895
+      },
+      "tbl_av_hardness": {
+        "picp90": 0.938,
+        "rmse": 18.69
+      },
+      "tbl_rsd_weight": {
+        "picp90": 0.969,
+        "rmse": 0.364
+      },
+      "fct_tensile": {
+        "picp90": 1.0,
+        "rmse": 0.143
+      }
+    }
+  }
+}
