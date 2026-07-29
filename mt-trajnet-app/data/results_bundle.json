@@ -1,0 +1,1370 @@
+{
+ "meta": {
+  "model": "MT-TrajNet",
+  "seed": 42,
+  "folds": 3,
+  "fold_scheme": "product-code grouped, cluster-stratified, code 15 held out",
+  "hardware": "single Kaggle Tesla T4",
+  "data_md5": "7d7fc76be1e4940198b76d9d0797a3a9",
+  "cv_batches": 941,
+  "total_batches": 1005,
+  "product_codes": 25
+ },
+ "dataset": {
+  "n_batches": 1005,
+  "n_codes": 25,
+  "sensor_channels": 10,
+  "sampling_seconds": 10,
+  "sensor_rows_millions": 4.72,
+  "trajectory_length": {
+   "min": 993,
+   "median": 3228,
+   "max": 41710
+  },
+  "targets": {
+   "dissolution_av": {
+    "min": 82.5,
+    "max": 102.67,
+    "mean": 90.65
+   },
+   "tbl_av_hardness": {
+    "min": 27.0,
+    "max": 102.0,
+    "mean": 54.87
+   },
+   "tbl_rsd_weight": {
+    "min": 0.41,
+    "max": 9.9,
+    "mean": 1.09
+   },
+   "fct_tensile": {
+    "min": 1.04,
+    "max": 3.04,
+    "mean": 1.67
+   }
+  },
+  "correlations": {
+   "dissolution_av|tbl_av_hardness": -0.282,
+   "dissolution_av|tbl_rsd_weight": 0.018,
+   "dissolution_av|fct_tensile": 0.517,
+   "tbl_av_hardness|tbl_rsd_weight": -0.064,
+   "tbl_av_hardness|fct_tensile": -0.38,
+   "tbl_rsd_weight|fct_tensile": -0.017
+  }
+ },
+ "hardness_cluster": {
+  "high_cluster_codes": [
+   4,
+   8,
+   15,
+   20,
+   24
+  ],
+  "high_cluster_batches": 98,
+  "low_cluster_batches": 907,
+  "overlap": "none",
+  "note": "hardness bimodality maps to five distinct high-hardness product codes with no overlap; OOD test on a high-hardness code (e.g. code 15) mixes distribution shift with hardness-regime shift"
+ },
+ "folds": {
+  "ood_code": 15,
+  "n_splits": 3,
+  "folds": {
+   "fold_1": [
+    1,
+    2,
+    4,
+    6,
+    7,
+    9,
+    13,
+    18,
+    25
+   ],
+   "fold_2": [
+    10,
+    11,
+    17,
+    19,
+    22,
+    24
+   ],
+   "fold_3": [
+    3,
+    5,
+    8,
+    12,
+    14,
+    16,
+    20,
+    21,
+    23
+   ]
+  },
+  "high_cluster_per_fold": {
+   "fold_1": 22,
+   "fold_2": 6,
+   "fold_3": 6
+  }
+ },
+ "comparison_table": {
+  "models": [
+   "dummy",
+   "lasso",
+   "xgb",
+   "lasso_tuned",
+   "xgb_tuned",
+   "MT_TrajNet",
+   "best_baseline"
+  ],
+  "rows": {
+   "dissolution_av": {
+    "dummy": 3.533,
+    "lasso": 3.171,
+    "xgb": 3.272,
+    "lasso_tuned": 3.205,
+    "xgb_tuned": 3.243,
+    "MT_TrajNet": 3.261,
+    "best_baseline": 3.171
+   },
+   "tbl_av_hardness": {
+    "dummy": 8.82,
+    "lasso": 5.962,
+    "xgb": 4.737,
+    "lasso_tuned": 6.087,
+    "xgb_tuned": 4.761,
+    "MT_TrajNet": 7.698,
+    "best_baseline": 4.737
+   },
+   "tbl_rsd_weight": {
+    "dummy": 0.573,
+    "lasso": 0.557,
+    "xgb": 0.635,
+    "lasso_tuned": 0.563,
+    "xgb_tuned": 0.611,
+    "MT_TrajNet": 0.585,
+    "best_baseline": 0.557
+   },
+   "fct_tensile": {
+    "dummy": 0.422,
+    "lasso": 0.359,
+    "xgb": 0.279,
+    "lasso_tuned": 0.325,
+    "xgb_tuned": 0.27,
+    "MT_TrajNet": 0.345,
+    "best_baseline": 0.27
+   }
+  }
+ },
+ "rq1": {
+  "comparison": "MT-TrajNet (stratified folds, cross-fitting) vs tuned XGBoost (500 trees, depth 5, lr 0.03, subsample 0.8), same stratified folds, code 15 excluded, Nadeau-Bengio corrected paired test",
+  "note": "three folds gives low power; p-values are weak evidence in either direction. Fold values in this file are rounded to three decimals for storage: the MT-TrajNet folds as saved by Notebook 8, the XGBoost folds on writing. All means and p-values are computed from the unrounded values, so recomputing them from the stored folds can differ by up to 0.002. mt_mean is Notebook 8's mean from the unrounded folds.",
+  "results": {
+   "dissolution_av": {
+    "xgb_folds": [
+     3.2,
+     3.244,
+     3.285
+    ],
+    "xgb_mean": 3.243,
+    "mt_folds": [
+     3.344,
+     3.147,
+     3.292
+    ],
+    "mt_mean": 3.261,
+    "diff": 0.018,
+    "p": 0.886,
+    "significant": false
+   },
+   "tbl_av_hardness": {
+    "xgb_folds": [
+     4.984,
+     4.076,
+     5.222
+    ],
+    "xgb_mean": 4.761,
+    "mt_folds": [
+     7.9,
+     7.428,
+     7.767
+    ],
+    "mt_mean": 7.698,
+    "diff": 2.937,
+    "p": 0.015,
+    "significant": true
+   },
+   "tbl_rsd_weight": {
+    "xgb_folds": [
+     0.741,
+     0.454,
+     0.639
+    ],
+    "xgb_mean": 0.611,
+    "mt_folds": [
+     0.77,
+     0.442,
+     0.543
+    ],
+    "mt_mean": 0.585,
+    "diff": -0.026,
+    "p": 0.697,
+    "significant": false
+   },
+   "fct_tensile": {
+    "xgb_folds": [
+     0.288,
+     0.251,
+     0.27
+    ],
+    "xgb_mean": 0.27,
+    "mt_folds": [
+     0.404,
+     0.35,
+     0.283
+    ],
+    "mt_mean": 0.345,
+    "diff": 0.075,
+    "p": 0.269,
+    "significant": false
+   }
+  }
+ },
+ "rq2": {
+  "comparison": "single-task vs multi-task, stratified folds + cross-fitting setup (seed 42), Nadeau-Bengio",
+  "note": "multi-task fold values and means are from the Notebook 8 authoritative run; both on identical stratified folds; three folds gives low power. Fold values are stored rounded to three decimals, so recomputing a mean or a p-value from them can differ from the stored value by up to 0.002; multi_mean is Notebook 8 mean from the unrounded folds.",
+  "params": {
+   "multi_task": 384400,
+   "four_single_task": 1435408,
+   "reduction": 3.73
+  },
+  "results": {
+   "dissolution_av": {
+    "single_folds": [
+     3.654,
+     3.393,
+     3.593
+    ],
+    "single_mean": 3.547,
+    "multi_folds": [
+     3.344,
+     3.147,
+     3.292
+    ],
+    "multi_mean": 3.261,
+    "diff": 0.286,
+    "p": 0.012,
+    "significant": true
+   },
+   "tbl_av_hardness": {
+    "single_folds": [
+     11.054,
+     7.514,
+     6.363
+    ],
+    "single_mean": 8.31,
+    "multi_folds": [
+     7.9,
+     7.428,
+     7.767
+    ],
+    "multi_mean": 7.698,
+    "diff": 0.612,
+    "p": 0.8,
+    "significant": false
+   },
+   "tbl_rsd_weight": {
+    "single_folds": [
+     0.768,
+     0.54,
+     0.477
+    ],
+    "single_mean": 0.595,
+    "multi_folds": [
+     0.77,
+     0.442,
+     0.543
+    ],
+    "multi_mean": 0.585,
+    "diff": 0.01,
+    "p": 0.904,
+    "significant": false
+   },
+   "fct_tensile": {
+    "single_folds": [
+     0.385,
+     0.311,
+     0.397
+    ],
+    "single_mean": 0.364,
+    "multi_folds": [
+     0.404,
+     0.35,
+     0.283
+    ],
+    "multi_mean": 0.345,
+    "diff": 0.019,
+    "p": 0.83,
+    "significant": false
+   }
+  }
+ },
+ "point_ablation": {
+  "run": "point-output ablation (RQ1 support), same TCN encoder, linear head, MSE loss, stratified folds, seed 42",
+  "setup": "identical encoder/folds/normalisation as MT-TrajNet; evidential head replaced by 2-layer linear head; plain MSE; cross-fitting not applicable (point output, no intervals)",
+  "point_output_rmse_mean": {
+   "dissolution_av": 3.694,
+   "tbl_av_hardness": 6.698,
+   "tbl_rsd_weight": 0.591,
+   "fct_tensile": 0.4
+  },
+  "point_output_rmse_folds": {
+   "dissolution_av": [
+    4.114,
+    3.249,
+    3.72
+   ],
+   "tbl_av_hardness": [
+    8.444,
+    5.423,
+    6.227
+   ],
+   "tbl_rsd_weight": [
+    0.793,
+    0.455,
+    0.525
+   ],
+   "fct_tensile": [
+    0.456,
+    0.322,
+    0.422
+   ]
+  },
+  "reference_evidential_rmse": {
+   "dissolution_av": 3.261,
+   "tbl_av_hardness": 7.698,
+   "tbl_rsd_weight": 0.585,
+   "fct_tensile": 0.345
+  },
+  "reference_tuned_xgb_rmse": {
+   "dissolution_av": 3.243,
+   "tbl_av_hardness": 4.761,
+   "tbl_rsd_weight": 0.611,
+   "fct_tensile": 0.27
+  },
+  "note": "On hardness the point-output model (6.698) beats the evidential model (7.698), so the evidential loss costs about 1.0 RMSE on hardness. But point-output still trails tuned XGBoost (4.761) by about 1.9, so most of the hardness gap is the trajectory encoder and the low high-cluster training count, not the evidential objective. On dissolution, weight RSD and tensile the point-output model is equal or slightly worse, so the evidential loss does not hurt overall accuracy elsewhere."
+ },
+ "rmse": {
+  "fold_mean": {
+   "dissolution_av": 3.261,
+   "tbl_av_hardness": 7.698,
+   "tbl_rsd_weight": 0.585,
+   "fct_tensile": 0.345
+  },
+  "fold_values": {
+   "dissolution_av": [
+    3.344,
+    3.147,
+    3.292
+   ],
+   "tbl_av_hardness": [
+    7.9,
+    7.428,
+    7.767
+   ],
+   "tbl_rsd_weight": [
+    0.77,
+    0.442,
+    0.543
+   ],
+   "fct_tensile": [
+    0.404,
+    0.35,
+    0.283
+   ]
+  }
+ },
+ "calibration": {
+  "dissolution_av": {
+   "picp": 0.857,
+   "ece": 0.021,
+   "corr": 0.035,
+   "scale": 0.212,
+   "scale_per_fold": [
+    0.228,
+    0.199,
+    0.207
+   ]
+  },
+  "tbl_av_hardness": {
+   "picp": 0.932,
+   "ece": 0.038,
+   "corr": 0.533,
+   "scale": 0.317,
+   "scale_per_fold": [
+    0.327,
+    0.311,
+    0.312
+   ]
+  },
+  "tbl_rsd_weight": {
+   "picp": 0.946,
+   "ece": 0.184,
+   "corr": 0.029,
+   "scale": 0.57,
+   "scale_per_fold": [
+    0.572,
+    0.584,
+    0.553
+   ]
+  },
+  "fct_tensile": {
+   "picp": 0.841,
+   "ece": 0.033,
+   "corr": -0.015,
+   "scale": 0.255,
+   "scale_per_fold": [
+    0.214,
+    0.244,
+    0.308
+   ]
+  }
+ },
+ "pooled_metrics": {
+  "dissolution_av": {
+   "rmse": 3.262,
+   "rmse_ci": [
+    3.109,
+    3.422
+   ],
+   "mae": 2.564,
+   "mae_ci": [
+    2.435,
+    2.692
+   ],
+   "r2": 0.05,
+   "r2_ci": [
+    0.001,
+    0.094
+   ],
+   "n": 941
+  },
+  "tbl_av_hardness": {
+   "rmse": 7.701,
+   "rmse_ci": [
+    6.992,
+    8.446
+   ],
+   "mae": 5.161,
+   "mae_ci": [
+    4.814,
+    5.564
+   ],
+   "r2": 0.252,
+   "r2_ci": [
+    0.126,
+    0.349
+   ],
+   "n": 941
+  },
+  "tbl_rsd_weight": {
+   "rmse": 0.601,
+   "rmse_ci": [
+    0.453,
+    0.76
+   ],
+   "mae": 0.293,
+   "mae_ci": [
+    0.263,
+    0.327
+   ],
+   "r2": -0.063,
+   "r2_ci": [
+    -0.097,
+    -0.032
+   ],
+   "n": 941
+  },
+  "fct_tensile": {
+   "rmse": 0.349,
+   "rmse_ci": [
+    0.333,
+    0.365
+   ],
+   "mae": 0.273,
+   "mae_ci": [
+    0.26,
+    0.287
+   ],
+   "r2": 0.114,
+   "r2_ci": [
+    0.036,
+    0.185
+   ],
+   "n": 941
+  }
+ },
+ "coverage": {
+  "dissolution_av": {
+   "picp80": 0.77,
+   "picp90": 0.857,
+   "picp95": 0.897,
+   "ece_5bin": 0.024,
+   "mean_width_90": 10.838,
+   "width_over_rmse": 3.32
+  },
+  "tbl_av_hardness": {
+   "picp80": 0.846,
+   "picp90": 0.932,
+   "picp95": 0.957,
+   "ece_5bin": 0.031,
+   "mean_width_90": 25.397,
+   "width_over_rmse": 3.3
+  },
+  "tbl_rsd_weight": {
+   "picp80": 0.93,
+   "picp90": 0.946,
+   "picp95": 0.96,
+   "ece_5bin": 0.163,
+   "mean_width_90": 1.962,
+   "width_over_rmse": 3.26
+  },
+  "fct_tensile": {
+   "picp80": 0.79,
+   "picp90": 0.841,
+   "picp95": 0.865,
+   "ece_5bin": 0.034,
+   "mean_width_90": 1.187,
+   "width_over_rmse": 3.4
+  }
+ },
+ "ood": {
+  "analysis": "out of distribution test, code 15 high cluster and code 25 low cluster control",
+  "setup": "fold 1 model has never seen either code so the contrast is fair; code 15 also predicted by the fold 2 and fold 3 models as a robustness check; the uncertainty scale is the one Notebook 8 fitted for each fold on the other two folds so it never touched the codes reported here; no training performed, saved weights loaded in inference mode",
+  "ood_code": 15,
+  "ood_batches": 64,
+  "ood_mean_hardness": 90.2,
+  "control_code": 25,
+  "control_batches": 34,
+  "control_mean_hardness": 50.4,
+  "cv_reference_rmse": {
+   "dissolution_av": 3.261,
+   "tbl_av_hardness": 7.698,
+   "tbl_rsd_weight": 0.585,
+   "fct_tensile": 0.345
+  },
+  "results": {
+   "code15_fold1": {
+    "dissolution_av": {
+     "rmse": 2.895,
+     "picp": 1.0,
+     "mean_pred": 87.0,
+     "mean_true": 88.12,
+     "scale_used": 0.228
+    },
+    "tbl_av_hardness": {
+     "rmse": 18.69,
+     "picp": 0.938,
+     "mean_pred": 96.77,
+     "mean_true": 90.17,
+     "scale_used": 0.327
+    },
+    "tbl_rsd_weight": {
+     "rmse": 0.364,
+     "picp": 0.969,
+     "mean_pred": 1.02,
+     "mean_true": 0.96,
+     "scale_used": 0.572
+    },
+    "fct_tensile": {
+     "rmse": 0.143,
+     "picp": 1.0,
+     "mean_pred": 1.27,
+     "mean_true": 1.29,
+     "scale_used": 0.214
+    }
+   },
+   "code15_fold2": {
+    "dissolution_av": {
+     "rmse": 3.039,
+     "picp": 1.0,
+     "mean_pred": 86.86,
+     "mean_true": 88.12,
+     "scale_used": 0.199
+    },
+    "tbl_av_hardness": {
+     "rmse": 38.017,
+     "picp": 0.391,
+     "mean_pred": 52.48,
+     "mean_true": 90.17,
+     "scale_used": 0.311
+    },
+    "tbl_rsd_weight": {
+     "rmse": 0.391,
+     "picp": 1.0,
+     "mean_pred": 1.16,
+     "mean_true": 0.96,
+     "scale_used": 0.584
+    },
+    "fct_tensile": {
+     "rmse": 0.806,
+     "picp": 0.922,
+     "mean_pred": 0.64,
+     "mean_true": 1.29,
+     "scale_used": 0.244
+    }
+   },
+   "code15_fold3": {
+    "dissolution_av": {
+     "rmse": 2.84,
+     "picp": 1.0,
+     "mean_pred": 87.95,
+     "mean_true": 88.12,
+     "scale_used": 0.207
+    },
+    "tbl_av_hardness": {
+     "rmse": 32.633,
+     "picp": 0.984,
+     "mean_pred": 58.0,
+     "mean_true": 90.17,
+     "scale_used": 0.312
+    },
+    "tbl_rsd_weight": {
+     "rmse": 0.353,
+     "picp": 0.984,
+     "mean_pred": 1.06,
+     "mean_true": 0.96,
+     "scale_used": 0.553
+    },
+    "fct_tensile": {
+     "rmse": 0.419,
+     "picp": 1.0,
+     "mean_pred": 1.03,
+     "mean_true": 1.29,
+     "scale_used": 0.308
+    }
+   },
+   "code25_fold1": {
+    "dissolution_av": {
+     "rmse": 3.299,
+     "picp": 0.912,
+     "mean_pred": 92.43,
+     "mean_true": 94.47,
+     "scale_used": 0.228
+    },
+    "tbl_av_hardness": {
+     "rmse": 4.918,
+     "picp": 0.971,
+     "mean_pred": 47.64,
+     "mean_true": 50.35,
+     "scale_used": 0.327
+    },
+    "tbl_rsd_weight": {
+     "rmse": 0.587,
+     "picp": 0.971,
+     "mean_pred": 0.93,
+     "mean_true": 1.02,
+     "scale_used": 0.572
+    },
+    "fct_tensile": {
+     "rmse": 0.303,
+     "picp": 0.853,
+     "mean_pred": 1.77,
+     "mean_true": 2.03,
+     "scale_used": 0.214
+    }
+   }
+  },
+  "error_ratios": {
+   "code15_fold1": {
+    "dissolution_av": 0.888,
+    "tbl_av_hardness": 2.428,
+    "tbl_rsd_weight": 0.622,
+    "fct_tensile": 0.414
+   },
+   "code15_fold2": {
+    "dissolution_av": 0.932,
+    "tbl_av_hardness": 4.939,
+    "tbl_rsd_weight": 0.668,
+    "fct_tensile": 2.336
+   },
+   "code15_fold3": {
+    "dissolution_av": 0.871,
+    "tbl_av_hardness": 4.239,
+    "tbl_rsd_weight": 0.603,
+    "fct_tensile": 1.214
+   },
+   "code25_fold1": {
+    "dissolution_av": 1.012,
+    "tbl_av_hardness": 0.639,
+    "tbl_rsd_weight": 1.003,
+    "fct_tensile": 0.878
+   }
+  }
+ },
+ "ensemble": {
+  "analysis": "RQ3 deep ensemble vs evidential, fold 1, 5 seeds, calib/eval partition method",
+  "pkl_md5": "7d7fc76be1e4940198b76d9d0797a3a9",
+  "n_seeds": 5,
+  "seeds": [
+   42,
+   43,
+   44,
+   45,
+   46
+  ],
+  "config": {
+   "max_epochs": 150,
+   "patience": 10,
+   "lr": 0.0005,
+   "batch_size": 16
+  },
+  "ensemble_uncertainty": "between-seed variance of means plus mean per-seed aleatoric variance, then calibrated on a held-out half",
+  "in_distribution": {
+   "ensemble": {
+    "dissolution_av": {
+     "picp80": 0.777,
+     "picp90": 0.854,
+     "picp95": 0.898,
+     "ece10": 0.042,
+     "err_corr": -0.101,
+     "rmse": 3.408,
+     "scale": 0.901
+    },
+    "tbl_av_hardness": {
+     "picp80": 0.892,
+     "picp90": 0.924,
+     "picp95": 0.955,
+     "ece10": 0.071,
+     "err_corr": 0.686,
+     "rmse": 9.081,
+     "scale": 1.182
+    },
+    "tbl_rsd_weight": {
+     "picp80": 0.834,
+     "picp90": 0.911,
+     "picp95": 0.936,
+     "ece10": 0.066,
+     "err_corr": 0.125,
+     "rmse": 0.755,
+     "scale": 0.635
+    },
+    "fct_tensile": {
+     "picp80": 0.815,
+     "picp90": 0.904,
+     "picp95": 0.962,
+     "ece10": 0.029,
+     "err_corr": 0.189,
+     "rmse": 0.404,
+     "scale": 1.248
+    }
+   },
+   "evidential": {
+    "dissolution_av": {
+     "picp80": 0.739,
+     "picp90": 0.847,
+     "picp95": 0.898,
+     "ece10": 0.032,
+     "err_corr": -0.069,
+     "rmse": 3.344
+    },
+    "tbl_av_hardness": {
+     "picp80": 0.72,
+     "picp90": 0.847,
+     "picp95": 0.93,
+     "ece10": 0.051,
+     "err_corr": 0.527,
+     "rmse": 7.9
+    },
+    "tbl_rsd_weight": {
+     "picp80": 0.866,
+     "picp90": 0.911,
+     "picp95": 0.924,
+     "ece10": 0.077,
+     "err_corr": 0.099,
+     "rmse": 0.77
+    },
+    "fct_tensile": {
+     "picp80": 0.847,
+     "picp90": 0.93,
+     "picp95": 0.968,
+     "ece10": 0.118,
+     "err_corr": -0.131,
+     "rmse": 0.404
+    }
+   }
+  },
+  "ood_code15": {
+   "ensemble": {
+    "dissolution_av": {
+     "picp80": 0.812,
+     "picp90": 0.906,
+     "picp95": 0.938,
+     "ece10": 0.063,
+     "err_corr": 0.352,
+     "rmse": 2.793,
+     "scale": 0.786
+    },
+    "tbl_av_hardness": {
+     "picp80": 0.531,
+     "picp90": 0.75,
+     "picp95": 0.844,
+     "ece10": 0.216,
+     "err_corr": 0.34,
+     "rmse": 14.08,
+     "scale": 0.629
+    },
+    "tbl_rsd_weight": {
+     "picp80": 0.75,
+     "picp90": 0.812,
+     "picp95": 0.812,
+     "ece10": 0.066,
+     "err_corr": 0.096,
+     "rmse": 0.342,
+     "scale": 0.373
+    },
+    "fct_tensile": {
+     "picp80": 0.688,
+     "picp90": 0.875,
+     "picp95": 0.938,
+     "ece10": 0.072,
+     "err_corr": 0.236,
+     "rmse": 0.117,
+     "scale": 0.289
+    }
+   },
+   "evidential": {
+    "dissolution_av": {
+     "picp90": 1.0,
+     "rmse": 2.895
+    },
+    "tbl_av_hardness": {
+     "picp90": 0.938,
+     "rmse": 18.69
+    },
+    "tbl_rsd_weight": {
+     "picp90": 0.969,
+     "rmse": 0.364
+    },
+    "fct_tensile": {
+     "picp90": 1.0,
+     "rmse": 0.143
+    }
+   }
+  }
+ },
+ "attribution": {
+  "analysis": "RQ3b uncertainty-stratified SHAP, all four targets, stratified cross-fitting model (Notebook 8), fold 1",
+  "setup": "GradientExplainer, 32 background samples, full fold-1 test set (314 batches), top/bottom 20% by per-target epistemic uncertainty; reproduced identically across two runs",
+  "results": {
+   "dissolution_av": {
+    "kendall_tau": 0.822,
+    "p": 0.0004,
+    "significant": true,
+    "mean_epistemic": {
+     "confident": 14.642,
+     "uncertain": 76.167
+    },
+    "channel_ratios": {
+     "tbl_speed": 1.078,
+     "fom": 1.028,
+     "main_comp": 0.681,
+     "tbl_fill": 0.798,
+     "SREL": 0.581,
+     "pre_comp": 1.218,
+     "cyl_main": 0.71,
+     "cyl_pre": 0.984,
+     "stiffness": 0.581,
+     "ejection": 1.678
+    },
+    "phase_ratios": {
+     "early": 0.807,
+     "mid": 0.951,
+     "late": 0.896
+    }
+   },
+   "tbl_av_hardness": {
+    "kendall_tau": 0.822,
+    "p": 0.0004,
+    "significant": true,
+    "mean_epistemic": {
+     "confident": 6.688,
+     "uncertain": 54.654
+    },
+    "channel_ratios": {
+     "tbl_speed": 1.384,
+     "fom": 1.464,
+     "main_comp": 1.582,
+     "tbl_fill": 4.862,
+     "SREL": 1.28,
+     "pre_comp": 1.147,
+     "cyl_main": 2.805,
+     "cyl_pre": 1.517,
+     "stiffness": 0.981,
+     "ejection": 1.007
+    },
+    "phase_ratios": {
+     "early": 1.932,
+     "mid": 1.672,
+     "late": 1.643
+    }
+   },
+   "tbl_rsd_weight": {
+    "kendall_tau": 0.467,
+    "p": 0.0726,
+    "significant": false,
+    "mean_epistemic": {
+     "confident": 4.309,
+     "uncertain": 14.265
+    },
+    "channel_ratios": {
+     "tbl_speed": 1.636,
+     "fom": 0.49,
+     "main_comp": 0.839,
+     "tbl_fill": 1.268,
+     "SREL": 0.876,
+     "pre_comp": 0.52,
+     "cyl_main": 0.968,
+     "cyl_pre": 1.281,
+     "stiffness": 0.305,
+     "ejection": 1.331
+    },
+    "phase_ratios": {
+     "early": 1.043,
+     "mid": 0.502,
+     "late": 1.34
+    }
+   },
+   "fct_tensile": {
+    "kendall_tau": 0.467,
+    "p": 0.0726,
+    "significant": false,
+    "mean_epistemic": {
+     "confident": 6.324,
+     "uncertain": 27.027
+    },
+    "channel_ratios": {
+     "tbl_speed": 0.805,
+     "fom": 0.54,
+     "main_comp": 1.343,
+     "tbl_fill": 0.863,
+     "SREL": 0.875,
+     "pre_comp": 0.559,
+     "cyl_main": 0.29,
+     "cyl_pre": 1.136,
+     "stiffness": 1.373,
+     "ejection": 1.879
+    },
+    "phase_ratios": {
+     "early": 0.902,
+     "mid": 1.011,
+     "late": 1.926
+    }
+   }
+  },
+  "note": "channel-level attribution shift is significant and reproducible on dissolution and hardness (tau 0.822, p 0.0004), not significant on weight RSD and tensile (tau 0.467, p 0.073); the strong mid and late phase-attention shift seen on the earlier model (trained on the imbalanced folds) did not replicate on the corrected stratified model, indicating that phase pattern was specific to the earlier model rather than a robust property",
+  "by_target": {
+   "dissolution_av": {
+    "kendall_tau": 0.822,
+    "p": 0.0004,
+    "significant": true,
+    "mean_epistemic": {
+     "confident": 14.642,
+     "uncertain": 76.167
+    },
+    "channel_ratios": {
+     "tbl_speed": 1.078,
+     "fom": 1.028,
+     "main_comp": 0.681,
+     "tbl_fill": 0.798,
+     "SREL": 0.581,
+     "pre_comp": 1.218,
+     "cyl_main": 0.71,
+     "cyl_pre": 0.984,
+     "stiffness": 0.581,
+     "ejection": 1.678
+    },
+    "phase_ratios": {
+     "early": 0.807,
+     "mid": 0.951,
+     "late": 0.896
+    }
+   },
+   "tbl_av_hardness": {
+    "kendall_tau": 0.822,
+    "p": 0.0004,
+    "significant": true,
+    "mean_epistemic": {
+     "confident": 6.688,
+     "uncertain": 54.654
+    },
+    "channel_ratios": {
+     "tbl_speed": 1.384,
+     "fom": 1.464,
+     "main_comp": 1.582,
+     "tbl_fill": 4.862,
+     "SREL": 1.28,
+     "pre_comp": 1.147,
+     "cyl_main": 2.805,
+     "cyl_pre": 1.517,
+     "stiffness": 0.981,
+     "ejection": 1.007
+    },
+    "phase_ratios": {
+     "early": 1.932,
+     "mid": 1.672,
+     "late": 1.643
+    }
+   },
+   "tbl_rsd_weight": {
+    "kendall_tau": 0.467,
+    "p": 0.0726,
+    "significant": false,
+    "mean_epistemic": {
+     "confident": 4.309,
+     "uncertain": 14.265
+    },
+    "channel_ratios": {
+     "tbl_speed": 1.636,
+     "fom": 0.49,
+     "main_comp": 0.839,
+     "tbl_fill": 1.268,
+     "SREL": 0.876,
+     "pre_comp": 0.52,
+     "cyl_main": 0.968,
+     "cyl_pre": 1.281,
+     "stiffness": 0.305,
+     "ejection": 1.331
+    },
+    "phase_ratios": {
+     "early": 1.043,
+     "mid": 0.502,
+     "late": 1.34
+    }
+   },
+   "fct_tensile": {
+    "kendall_tau": 0.467,
+    "p": 0.0726,
+    "significant": false,
+    "mean_epistemic": {
+     "confident": 6.324,
+     "uncertain": 27.027
+    },
+    "channel_ratios": {
+     "tbl_speed": 0.805,
+     "fom": 0.54,
+     "main_comp": 1.343,
+     "tbl_fill": 0.863,
+     "SREL": 0.875,
+     "pre_comp": 0.559,
+     "cyl_main": 0.29,
+     "cyl_pre": 1.136,
+     "stiffness": 1.373,
+     "ejection": 1.879
+    },
+    "phase_ratios": {
+     "early": 0.902,
+     "mid": 1.011,
+     "late": 1.926
+    }
+   }
+  }
+ },
+ "hardness_law": {
+  "codes": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12,
+   13,
+   14,
+   16,
+   17,
+   18,
+   19,
+   20,
+   21,
+   22,
+   23,
+   24,
+   25
+  ],
+  "mean_hardness": [
+   50.9,
+   53.6,
+   52.1,
+   90.4,
+   49.7,
+   52.0,
+   53.4,
+   90.5,
+   48.2,
+   52.6,
+   38.9,
+   52.2,
+   50.2,
+   36.0,
+   37.0,
+   53.0,
+   57.0,
+   51.8,
+   89.5,
+   46.7,
+   52.3,
+   52.2,
+   89.7,
+   50.4
+  ],
+  "hardness_rmse": [
+   4.754,
+   3.696,
+   3.932,
+   19.665,
+   4.633,
+   5.251,
+   4.351,
+   34.109,
+   4.626,
+   4.452,
+   11.364,
+   2.836,
+   7.593,
+   18.841,
+   17.628,
+   5.078,
+   6.269,
+   2.75,
+   33.323,
+   7.515,
+   4.576,
+   4.218,
+   37.582,
+   4.918
+  ],
+  "n_batches": [
+   95,
+   17,
+   16,
+   22,
+   3,
+   2,
+   8,
+   2,
+   4,
+   27,
+   15,
+   21,
+   131,
+   11,
+   2,
+   207,
+   1,
+   17,
+   4,
+   68,
+   41,
+   187,
+   6,
+   34
+  ],
+  "pearson_r": 0.941,
+  "p_value": 7.711012252625728e-12,
+  "description": "hardness RMSE grows with distance of a product code's mean hardness from 50 N"
+ },
+ "comparison": {
+  "by_target": {
+   "dissolution_av": {
+    "dummy": 3.533,
+    "lasso": 3.171,
+    "xgb": 3.272,
+    "lasso_tuned": 3.205,
+    "xgb_tuned": 3.243,
+    "MT_TrajNet": 3.261,
+    "best_baseline": 3.171
+   },
+   "tbl_av_hardness": {
+    "dummy": 8.82,
+    "lasso": 5.962,
+    "xgb": 4.737,
+    "lasso_tuned": 6.087,
+    "xgb_tuned": 4.761,
+    "MT_TrajNet": 7.698,
+    "best_baseline": 4.737
+   },
+   "tbl_rsd_weight": {
+    "dummy": 0.573,
+    "lasso": 0.557,
+    "xgb": 0.635,
+    "lasso_tuned": 0.563,
+    "xgb_tuned": 0.611,
+    "MT_TrajNet": 0.585,
+    "best_baseline": 0.557
+   },
+   "fct_tensile": {
+    "dummy": 0.422,
+    "lasso": 0.359,
+    "xgb": 0.279,
+    "lasso_tuned": 0.325,
+    "xgb_tuned": 0.27,
+    "MT_TrajNet": 0.345,
+    "best_baseline": 0.27
+   }
+  }
+ },
+ "significance": {
+  "by_target": {
+   "dissolution_av": {
+    "xgb_folds": [
+     3.2,
+     3.244,
+     3.285
+    ],
+    "xgb_mean": 3.243,
+    "mt_folds": [
+     3.344,
+     3.147,
+     3.292
+    ],
+    "mt_mean": 3.261,
+    "diff": 0.018,
+    "p": 0.886,
+    "significant": false
+   },
+   "tbl_av_hardness": {
+    "xgb_folds": [
+     4.984,
+     4.076,
+     5.222
+    ],
+    "xgb_mean": 4.761,
+    "mt_folds": [
+     7.9,
+     7.428,
+     7.767
+    ],
+    "mt_mean": 7.698,
+    "diff": 2.937,
+    "p": 0.015,
+    "significant": true
+   },
+   "tbl_rsd_weight": {
+    "xgb_folds": [
+     0.741,
+     0.454,
+     0.639
+    ],
+    "xgb_mean": 0.611,
+    "mt_folds": [
+     0.77,
+     0.442,
+     0.543
+    ],
+    "mt_mean": 0.585,
+    "diff": -0.026,
+    "p": 0.697,
+    "significant": false
+   },
+   "fct_tensile": {
+    "xgb_folds": [
+     0.288,
+     0.251,
+     0.27
+    ],
+    "xgb_mean": 0.27,
+    "mt_folds": [
+     0.404,
+     0.35,
+     0.283
+    ],
+    "mt_mean": 0.345,
+    "diff": 0.075,
+    "p": 0.269,
+    "significant": false
+   }
+  }
+ },
+ "multitask": {
+  "params": {
+   "multi_task": 384400,
+   "four_single_task": 1435408,
+   "reduction": 3.73
+  },
+  "by_target": {
+   "dissolution_av": {
+    "single_folds": [
+     3.654,
+     3.393,
+     3.593
+    ],
+    "single_mean": 3.547,
+    "multi_folds": [
+     3.344,
+     3.147,
+     3.292
+    ],
+    "multi_mean": 3.261,
+    "diff": 0.286,
+    "p": 0.012,
+    "significant": true
+   },
+   "tbl_av_hardness": {
+    "single_folds": [
+     11.054,
+     7.514,
+     6.363
+    ],
+    "single_mean": 8.31,
+    "multi_folds": [
+     7.9,
+     7.428,
+     7.767
+    ],
+    "multi_mean": 7.698,
+    "diff": 0.612,
+    "p": 0.8,
+    "significant": false
+   },
+   "tbl_rsd_weight": {
+    "single_folds": [
+     0.768,
+     0.54,
+     0.477
+    ],
+    "single_mean": 0.595,
+    "multi_folds": [
+     0.77,
+     0.442,
+     0.543
+    ],
+    "multi_mean": 0.585,
+    "diff": 0.01,
+    "p": 0.904,
+    "significant": false
+   },
+   "fct_tensile": {
+    "single_folds": [
+     0.385,
+     0.311,
+     0.397
+    ],
+    "single_mean": 0.364,
+    "multi_folds": [
+     0.404,
+     0.35,
+     0.283
+    ],
+    "multi_mean": 0.345,
+    "diff": 0.019,
+    "p": 0.83,
+    "significant": false
+   }
+  }
+ }
+}
